@@ -1,0 +1,26 @@
+{
+    "name": "artarts36/b0o-client",
+    "description": "B0o.Ru API Client",
+    "type": "library",
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.0@dev"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ArtARTs36",
+            "email": "temicska99@mail.ru"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "ArtARTs36\\B0oClient\\" : "src"
+        }
+    },
+    "scripts": {
+        "lint": [
+            "./vendor/bin/phpcs --standard=PSR2 src/"
+        ]
+    }
+}
