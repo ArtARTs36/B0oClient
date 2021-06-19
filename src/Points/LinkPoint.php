@@ -19,8 +19,8 @@ class LinkPoint extends Point implements \ArtARTs36\B0oClient\Contracts\LinkPoin
 
     public function cut(string $fullUrl): Link
     {
-        $response = $this->client->send('linkCut', [
-            'link' => $fullUrl,
+        $response = $this->client->send($this->protocol->request->methodName, [
+            $this->protocol->request->fullUrl => $fullUrl,
         ]);
 
         $this->protocol->response->ensureExceptionWhenInvalidData($response['data']);
