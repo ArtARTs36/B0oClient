@@ -33,7 +33,15 @@ class LinkPoint extends Point implements \ArtARTs36\B0oClient\Contracts\LinkPoin
         return new Link(
             $data[$this->protocol->response->shortUrl],
             $data[$this->protocol->response->qrUrl],
-            $data[$this->protocol->response->statUrl]
+            $data[$this->protocol->response->statUrl],
+            $this->extractLinkCode($data[$this->protocol->response->shortUrl])
         );
+    }
+
+    protected function extractLinkCode(string $url): string
+    {
+        $parts = explode(DIRECTORY_SEPARATOR, $url);
+
+        return end($parts);
     }
 }
