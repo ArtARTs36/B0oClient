@@ -2,8 +2,6 @@
 
 namespace ArtARTs36\B0oClient\Protocols\Link;
 
-use ArtARTs36\B0oClient\Protocols\CutLinkResponse;
-
 class CutLinkProtocol
 {
     public $request;

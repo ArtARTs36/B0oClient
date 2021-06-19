@@ -7,9 +7,9 @@ use ArtARTs36\B0oClient\Contracts\LinkPoint;
 use ArtARTs36\B0oClient\Protocols\Click\GetClicksCountProtocol;
 use ArtARTs36\B0oClient\Protocols\Click\GetClicksCountRequest;
 use ArtARTs36\B0oClient\Protocols\Click\GetClicksCountResponse;
-use ArtARTs36\B0oClient\Protocols\CutLinkResponse;
 use ArtARTs36\B0oClient\Protocols\Link\CutLinkProtocol;
 use ArtARTs36\B0oClient\Protocols\Link\CutLinkRequest;
+use ArtARTs36\B0oClient\Protocols\Link\CutLinkResponse;
 
 class Api implements Contracts\Api
 {
