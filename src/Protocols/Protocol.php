@@ -12,7 +12,7 @@ abstract class Protocol
      */
     public function valid(array $data): bool
     {
-        foreach (get_object_vars($this) as $field) {
+        foreach ($this->getFieldsForValidation() as $field) {
             if (empty($data[$field])) {
                 return false;
             }
@@ -29,5 +29,13 @@ abstract class Protocol
         if (! $this->valid($data)) {
             throw new GivenInvalidData();
         }
+    }
+
+    /**
+     * @return array<string>
+     */
+    protected function getFieldsForValidation(): array
+    {
+        return get_object_vars($this);
     }
 }
