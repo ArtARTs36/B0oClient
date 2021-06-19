@@ -4,8 +4,7 @@ namespace ArtARTs36\B0oClient\Points;
 
 use ArtARTs36\B0oClient\Contracts\Client;
 use ArtARTs36\B0oClient\Data\Link;
-use ArtARTs36\B0oClient\Exceptions\GivenInvalidData;
-use ArtARTs36\B0oClient\Protocols\CutLinkProtocol;
+use ArtARTs36\B0oClient\Protocols\Link\CutLinkProtocol;
 
 class LinkPoint extends Point implements \ArtARTs36\B0oClient\Contracts\LinkPoint
 {
@@ -24,7 +23,7 @@ class LinkPoint extends Point implements \ArtARTs36\B0oClient\Contracts\LinkPoin
             'link' => $fullUrl,
         ]);
 
-        $this->protocol->ensureExceptionWhenInvalidData($response['data']);
+        $this->protocol->response->ensureExceptionWhenInvalidData($response['data']);
 
         return $this->transformToLink($response['data']);
     }
@@ -32,9 +31,9 @@ class LinkPoint extends Point implements \ArtARTs36\B0oClient\Contracts\LinkPoin
     protected function transformToLink(array $data): Link
     {
         return new Link(
-            $data[$this->protocol->shortUrl],
-            $data[$this->protocol->qrUrl],
-            $data[$this->protocol->statUrl]
+            $data[$this->protocol->response->shortUrl],
+            $data[$this->protocol->response->qrUrl],
+            $data[$this->protocol->response->statUrl]
         );
     }
 }

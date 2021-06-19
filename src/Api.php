@@ -7,7 +7,9 @@ use ArtARTs36\B0oClient\Contracts\LinkPoint;
 use ArtARTs36\B0oClient\Protocols\Click\GetClicksCountProtocol;
 use ArtARTs36\B0oClient\Protocols\Click\GetClicksCountRequest;
 use ArtARTs36\B0oClient\Protocols\Click\GetClicksCountResponse;
-use ArtARTs36\B0oClient\Protocols\CutLinkProtocol;
+use ArtARTs36\B0oClient\Protocols\CutLinkResponse;
+use ArtARTs36\B0oClient\Protocols\Link\CutLinkProtocol;
+use ArtARTs36\B0oClient\Protocols\Link\CutLinkRequest;
 
 class Api implements Contracts\Api
 {
@@ -20,7 +22,7 @@ class Api implements Contracts\Api
 
     public function link(): LinkPoint
     {
-        return new Points\LinkPoint($this->client, new CutLinkProtocol());
+        return new Points\LinkPoint($this->client, new CutLinkProtocol(new CutLinkRequest(), new CutLinkResponse()));
     }
 
     public function click(): ClickPoint

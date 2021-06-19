@@ -2,7 +2,7 @@
 
 namespace ArtARTs36\B0oClient\Protocols;
 
-class CutLinkProtocol extends Protocol
+class CutLinkResponse extends Protocol
 {
     public $statUrl = 'urlStat';
 
