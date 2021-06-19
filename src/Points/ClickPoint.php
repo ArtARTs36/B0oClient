@@ -22,13 +22,11 @@ class ClickPoint extends Point implements \ArtARTs36\B0oClient\Contracts\ClickPo
      */
     public function count(string $link): int
     {
-        $response = $this->client->send('getCountClicks', [
+        $response = $this->client->send($this->countProtocol->request->methodName, [
             $this->countProtocol->request->link => $link,
         ]);
 
-        if (! isset($response['data'][$this->countProtocol->response->count])) {
-            throw new GivenInvalidData();
-        }
+        $this->countProtocol->response->ensureExceptionWhenInvalidData($response['data'] ?? []);
 
         return $response['data'][$this->countProtocol->response->count];
     }
