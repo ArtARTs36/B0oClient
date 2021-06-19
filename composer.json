@@ -23,6 +23,9 @@
     "scripts": {
         "lint": [
             "./vendor/bin/phpcs --standard=PSR2 src/"
+        ],
+        "test": [
+            "./vendor/bin/phpunit -v --coverage-text --colors=always --configuration phpunit.xml"
         ]
     }
 }
