@@ -24,9 +24,7 @@ class LinkPoint extends Point implements \ArtARTs36\B0oClient\Contracts\LinkPoin
             'link' => $fullUrl,
         ]);
 
-        if (! $this->protocol->valid($response['data'])) {
-            throw new GivenInvalidData();
-        }
+        $this->protocol->ensureExceptionWhenInvalidData($response['data']);
 
         return $this->transformToLink($response['data']);
     }

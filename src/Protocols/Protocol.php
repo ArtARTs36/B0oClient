@@ -2,6 +2,8 @@
 
 namespace ArtARTs36\B0oClient\Protocols;
 
+use ArtARTs36\B0oClient\Exceptions\GivenInvalidData;
+
 abstract class Protocol
 {
     /**
@@ -17,5 +19,15 @@ abstract class Protocol
         }
 
         return true;
+    }
+
+    /**
+     * @throws GivenInvalidData
+     */
+    public function ensureExceptionWhenInvalidData(array $data): void
+    {
+        if (! $this->valid($data)) {
+            throw new GivenInvalidData();
+        }
     }
 }
