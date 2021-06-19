@@ -2,11 +2,10 @@
 
 namespace ArtARTs36\B0oClient;
 
-use ArtARTs36\B0oClient\Support\Error;
+use ArtARTs36\B0oClient\Enums\Error;
 
 final class Client implements Contracts\Client
 {
-    public const TYPE_QUICK = 1;
     public const TYPE_FULL = 2;
 
     public const BASE_URL = 'https://b0o.ru/api/';
@@ -21,10 +20,10 @@ final class Client implements Contracts\Client
     /**
      * Send Request on Full Api B0o.ru
      */
-    public function sendToFull(string $method, array $data): array
+    public function send(string $method, array $data): array
     {
         $response = json_decode(
-            $this->execute($this->createContext($this->buildQuery($method, static::TYPE_FULL, $data))),
+            $this->execute($this->createContext($this->buildQuery($method, $data))),
             true
         );
 
@@ -36,19 +35,15 @@ final class Client implements Contracts\Client
     }
 
     /**
-     * Send Request on Quick Api B0o.ru
-     */
-    public function sendToQuick(string $method, string $data): string
-    {
-        return $this->execute($this->createContext($this->buildQuery($method, static::TYPE_QUICK, $data)));
-    }
-
-    /**
      * @param array|string
      */
-    private function buildQuery(string $method, int $type, $data): string
+    private function buildQuery(string $method, $data): string
     {
-        return http_build_query(compact('method', 'type', 'data'));
+        return http_build_query([
+            'method' => $method,
+            'type' => self::TYPE_FULL,
+            'data' => $data,
+        ]);
     }
 
     /**
