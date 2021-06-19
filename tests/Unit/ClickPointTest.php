@@ -5,8 +5,8 @@ namespace ArtARTs36\B0oClient\Tests\Unit;
 use ArtARTs36\B0oClient\Exceptions\GivenInvalidData;
 use ArtARTs36\B0oClient\Points\ClickPoint;
 use ArtARTs36\B0oClient\Protocols\Click\GetClicksCountProtocol;
-use ArtARTs36\B0oClient\Protocols\Click\GetClicksCountRequestProtocol;
-use ArtARTs36\B0oClient\Protocols\Click\GetClicksCountResponseProtocol;
+use ArtARTs36\B0oClient\Protocols\Click\GetClicksCountRequest;
+use ArtARTs36\B0oClient\Protocols\Click\GetClicksCountResponse;
 use ArtARTs36\B0oClient\Tests\Mocks\MockClient;
 use ArtARTs36\B0oClient\Tests\TestCase;
 
@@ -18,8 +18,8 @@ class ClickPointTest extends TestCase
     public function testCount(): void
     {
         $point = new ClickPoint($client = new MockClient(), new GetClicksCountProtocol(
-            new GetClicksCountRequestProtocol(),
-            $responseProtocol = new GetClicksCountResponseProtocol()
+            new GetClicksCountRequest(),
+            $responseProtocol = new GetClicksCountResponse()
         ));
 
         $client->setResponseData([

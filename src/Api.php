@@ -5,8 +5,8 @@ namespace ArtARTs36\B0oClient;
 use ArtARTs36\B0oClient\Contracts\ClickPoint;
 use ArtARTs36\B0oClient\Contracts\LinkPoint;
 use ArtARTs36\B0oClient\Protocols\Click\GetClicksCountProtocol;
-use ArtARTs36\B0oClient\Protocols\Click\GetClicksCountRequestProtocol;
-use ArtARTs36\B0oClient\Protocols\Click\GetClicksCountResponseProtocol;
+use ArtARTs36\B0oClient\Protocols\Click\GetClicksCountRequest;
+use ArtARTs36\B0oClient\Protocols\Click\GetClicksCountResponse;
 use ArtARTs36\B0oClient\Protocols\CutLinkProtocol;
 
 class Api implements Contracts\Api
@@ -26,8 +26,8 @@ class Api implements Contracts\Api
     public function click(): ClickPoint
     {
         return new Points\ClickPoint($this->client, new GetClicksCountProtocol(
-            new GetClicksCountRequestProtocol(),
-            new GetClicksCountResponseProtocol()
+            new GetClicksCountRequest(),
+            new GetClicksCountResponse()
         ));
     }
 }

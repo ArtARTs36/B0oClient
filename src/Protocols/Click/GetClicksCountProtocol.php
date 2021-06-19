@@ -8,7 +8,7 @@ class GetClicksCountProtocol
 
     public $response;
 
-    public function __construct(GetClicksCountRequestProtocol $request, GetClicksCountResponseProtocol $response)
+    public function __construct(GetClicksCountRequest $request, GetClicksCountResponse $response)
     {
         $this->request = $request;
         $this->response = $response;

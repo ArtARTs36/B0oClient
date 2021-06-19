@@ -2,7 +2,7 @@
 
 namespace ArtARTs36\B0oClient\Protocols\Click;
 
-class GetClicksCountRequestProtocol
+class GetClicksCountRequest
 {
     public $methodName = 'getCountClicks';
 
