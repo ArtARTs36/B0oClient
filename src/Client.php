@@ -53,11 +53,26 @@ final class Client implements Contracts\Client
     {
         $response = file_get_contents($this->url, false, $context);
 
-        if (false === $response || Error::is($response)) {
+        if (false === $response) {
+            $this->ensureHttpException();
+        }
+
+        if (Error::is($response)) {
             throw new \RuntimeException('Request on b0o.ru is failed. ' . $response);
         }
 
         return $response;
+    }
+
+    private function ensureHttpException(): void
+    {
+        $error = error_get_last();
+
+        if (empty($error['message'])) {
+            return;
+        }
+
+        throw new \HttpRuntimeException($error['message']);
     }
 
     /**
