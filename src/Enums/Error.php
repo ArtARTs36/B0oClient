@@ -1,6 +1,6 @@
 <?php
 
-namespace ArtARTs36\B0oClient\Support;
+namespace ArtARTs36\B0oClient\Enums;
 
 final class Error
 {
@@ -8,12 +8,17 @@ final class Error
     public const ERROR_PARAMETERS = 'Не переданы все параметры';
     public const ERROR_INCORRECT_PARAMETERS = 'Некорректные параметры!';
 
+    public static function cases(): array
+    {
+        return [
+            self::ERROR_METHOD,
+            self::ERROR_PARAMETERS,
+            self::ERROR_INCORRECT_PARAMETERS,
+        ];
+    }
+
     public static function is(string $response): bool
     {
-        return in_array($response, [
-            static::ERROR_METHOD,
-            static::ERROR_PARAMETERS,
-            static::ERROR_INCORRECT_PARAMETERS,
-        ]);
+        return in_array($response, self::cases());
     }
 }

@@ -3,7 +3,8 @@
     "description": "B0o.Ru API Client",
     "type": "library",
     "require-dev": {
-        "squizlabs/php_codesniffer": "^3.0@dev"
+        "squizlabs/php_codesniffer": "^3.0@dev",
+        "phpunit/phpunit": "^7.5 || ^8.5"
     },
     "license": "MIT",
     "authors": [
@@ -12,15 +13,21 @@
             "email": "temicska99@mail.ru"
         }
     ],
-    "require": {},
+    "require": {
+        "php": ">=7.2"
+    },
     "autoload": {
         "psr-4": {
-            "ArtARTs36\\B0oClient\\" : "src"
+            "ArtARTs36\\B0oClient\\" : "src",
+            "ArtARTs36\\B0oClient\\Tests\\" : "tests"
         }
     },
     "scripts": {
         "lint": [
             "./vendor/bin/phpcs --standard=PSR2 src/"
+        ],
+        "test": [
+            "./vendor/bin/phpunit -v --coverage-text --colors=always --configuration phpunit.xml"
         ]
     }
 }
